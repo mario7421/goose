@@ -24,6 +24,24 @@ _Build agents that run anywhere with oi-kit._
 
 Both live in this repository. goose is part of the [Agentic AI Foundation (AAIF)](https://aaif.io/) at the Linux Foundation.
 
+> [!NOTE]
+> **Personal fork of [aaif-goose/goose](https://github.com/aaif-goose/goose).** This `main` branch is the latest upstream `main` plus three fixes that are not merged there yet:
+>
+> - [#13223](https://github.com/aaif-goose/goose/pull/13223) — avoid reloading ancestor hint files
+> - [#13818](https://github.com/aaif-goose/goose/pull/13818) — restore visibility when truncating removes a compaction summary
+> - [#13819](https://github.com/aaif-goose/goose/issues/13819) — map `zai_coding_plan` to `zai-coding-plan` catalog keys (fixes 128k default context for new GLM models), proposed in [#13844](https://github.com/aaif-goose/goose/pull/13844)
+>
+> The CLI is built with the `roaming` feature enabled. To take the latest upstream commits and rebuild and install the desktop `.deb` (in this clone `origin` is `aaif-goose/goose`; if one of the fixes above lands upstream, drop the local copy of it before rebasing):
+>
+> ```bash
+> git fetch origin && git rebase origin/main && \
+>   cargo build --release -p goose-cli --bin goose --features roaming && \
+>   mkdir -p ui/desktop/src/bin && cp target/release/goose ui/desktop/src/bin/ && \
+>   cd ui/desktop && pnpm install && \
+>   pnpm run make --targets=@electron-forge/maker-deb && \
+>   sudo dpkg -i out/make/deb/x64/goose_*.deb
+> ```
+
 ## Build with oi-kit
 
 Compose an agent from a state machine, operations, tools, model providers, and context management. Your application owns the interface, policies, and storage.
