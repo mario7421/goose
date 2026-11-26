@@ -25,17 +25,18 @@ _Build agents that run anywhere with oi-kit._
 Both live in this repository. goose is part of the [Agentic AI Foundation (AAIF)](https://aaif.io/) at the Linux Foundation.
 
 > [!NOTE]
-> **Personal fork of [aaif-goose/goose](https://github.com/aaif-goose/goose).** This `main` branch is the latest upstream `main` plus three fixes that are not merged there yet:
+> **Personal fork of [aaif-goose/goose](https://github.com/aaif-goose/goose).** This `main` branch is the latest upstream `main` plus four fixes that are not merged there yet:
 >
 > - [#13223](https://github.com/aaif-goose/goose/pull/13223) — avoid reloading ancestor hint files
 > - [#13818](https://github.com/aaif-goose/goose/pull/13818) — restore visibility when truncating removes a compaction summary
 > - [#13819](https://github.com/aaif-goose/goose/issues/13819) — map `zai_coding_plan` to `zai-coding-plan` catalog keys (fixes 128k default context for new GLM models), proposed in [#13844](https://github.com/aaif-goose/goose/pull/13844)
 > - [#12785](https://github.com/aaif-goose/goose/issues/12785) (Z.AI Coding Plan part) — send the selected thinking effort as `reasoning_effort` (`low`/`high`/`max`) for GLM-5.3, GLM-5.3-Flash and GLM-5.4 instead of silently running at the server default; local fix, not proposed upstream
 >
-> The CLI is built with the `roaming` feature enabled. To take the latest upstream commits and rebuild and install the desktop `.deb` (in this clone `origin` is `aaif-goose/goose`; if one of the fixes above lands upstream, drop the local copy of it before rebasing):
+> The CLI is built with the `roaming` feature enabled. To take the latest upstream commits and rebuild and install the desktop `.deb`, paste this into a bash shell from anywhere inside the clone (it returns to the repo root and activates the Hermit environment, which provides the pinned `cargo` and `pnpm`; `origin` is `aaif-goose/goose`; if one of the fixes above lands upstream, drop the local copy of it before rebasing):
 >
 > ```bash
-> git fetch origin && git rebase origin/main && \
+> cd "$(git rev-parse --show-toplevel)" && source bin/activate-hermit && \
+>   git fetch origin && git rebase origin/main && \
 >   cargo build --release -p goose-cli --bin goose --features roaming && \
 >   mkdir -p ui/desktop/src/bin && cp target/release/goose ui/desktop/src/bin/ && \
 >   cd ui/desktop && pnpm install && \
