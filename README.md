@@ -30,6 +30,7 @@ Both live in this repository. goose is part of the [Agentic AI Foundation (AAIF)
 > - [#13223](https://github.com/aaif-goose/goose/pull/13223) — avoid reloading ancestor hint files
 > - [#13818](https://github.com/aaif-goose/goose/pull/13818) — restore visibility when truncating removes a compaction summary
 > - [#13819](https://github.com/aaif-goose/goose/issues/13819) — map `zai_coding_plan` to `zai-coding-plan` catalog keys (fixes 128k default context for new GLM models), proposed in [#13844](https://github.com/aaif-goose/goose/pull/13844)
+> - [#12785](https://github.com/aaif-goose/goose/issues/12785) (Z.AI Coding Plan part) — send the selected thinking effort as `reasoning_effort` (`low`/`high`/`max`) for GLM-5.3, GLM-5.3-Flash and GLM-5.4 instead of silently running at the server default; local fix, not proposed upstream
 >
 > The CLI is built with the `roaming` feature enabled. To take the latest upstream commits and rebuild and install the desktop `.deb` (in this clone `origin` is `aaif-goose/goose`; if one of the fixes above lands upstream, drop the local copy of it before rebasing):
 >
