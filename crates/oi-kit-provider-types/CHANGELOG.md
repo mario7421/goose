@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.1.0-alpha.17](https://github.com/mario7421/goose/compare/oi-kit-v0.1.0-alpha.16...oi-kit-v0.1.0-alpha.17) - 2026-11-26
+
+### Fixed
+
+- *(providers)* map zai_coding_plan to zai-coding-plan catalog keys
+- *(providers)* send Z.AI thinking levels instead of token budgets ([#13805](https://github.com/mario7421/goose/pull/13805))
+
 ## [0.1.0-alpha.16](https://github.com/aaif-goose/goose/compare/oi-kit-v0.1.0-alpha.15...oi-kit-v0.1.0-alpha.16) - 2026-11-25
 
 ### Added
